@@ -1,0 +1,1091 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<base target="_top">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>山創 道具管理</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<style>
+  :root {
+    --green: #2e7d32;
+    --green-dark: #1b5e20;
+    --green-light: #e8f5e9;
+    --ink: #1f2a24;
+    --sub: #5f6f66;
+    --border: #d9e2dc;
+    --bg: #f4f7f5;
+    --card: #ffffff;
+    --danger: #c62828;
+    --warn: #ef6c00;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Meiryo", "メイリオ", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+    width: 100%;
+  }
+  #app { max-width: 720px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; width: 100%; }
+
+  header.topbar {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--green);
+    color: #fff;
+    padding: max(10px, env(safe-area-inset-top)) 14px 10px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  header.topbar h1 { font-size: 17px; margin: 0; font-weight: 700; }
+  header.topbar .sub { font-size: 11px; opacity: 0.85; margin-top: 2px; }
+  header.topbar button.icon-btn {
+    background: rgba(255,255,255,0.15); border: none; color: #fff;
+    width: 34px; height: 34px; border-radius: 50%; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  nav.tabs {
+    position: sticky; top: 54px; z-index: 19;
+    display: flex; background: #fff; border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+  nav.tabs button {
+    flex: 1; min-width: 78px; padding: 10px 6px; border: none; background: none;
+    font-size: 13px; color: var(--sub); font-weight: 600; border-bottom: 3px solid transparent;
+    white-space: nowrap;
+  }
+  nav.tabs button.active { color: var(--green-dark); border-bottom-color: var(--green); }
+
+  main { flex: 1; padding: 14px; padding-bottom: 40px; }
+  .view { display: none; }
+  .view.active { display: block; }
+
+  .banner {
+    background: #fff3e0; color: var(--warn); border: 1px solid #ffe0b2;
+    border-radius: var(--radius); padding: 8px 12px; font-size: 12.5px; margin-bottom: 12px;
+  }
+  .banner.error { background: #ffebee; color: var(--danger); border-color: #ffcdd2; }
+  .banner.success { background: var(--green-light); color: var(--green-dark); border-color: #c8e6c9; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 14px; margin-bottom: 12px;
+  }
+  .card h2 { font-size: 15px; margin: 0 0 12px; color: var(--green-dark); }
+
+  label { display: block; font-size: 12.5px; color: var(--sub); margin: 10px 0 4px; font-weight: 600; }
+  label:first-of-type { margin-top: 0; }
+  input, select, textarea {
+    width: 100%; max-width: 100%; min-width: 0; padding: 10px 11px; border: 1px solid var(--border); border-radius: 9px;
+    font-size: 15px; background: #fff; color: var(--ink); font-family: inherit;
+  }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--green); outline-offset: -1px; }
+  textarea { resize: vertical; min-height: 54px; }
+  input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    min-width: 0;
+    text-align: left;
+  }
+  input[type="date"]::-webkit-date-and-time-value { text-align: left; }
+
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; min-width: 0; }
+  .row2 > div { min-width: 0; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    background: var(--green); color: #fff; border: none; border-radius: 9px;
+    padding: 12px 16px; font-size: 15px; font-weight: 700; width: 100%; margin-top: 14px;
+  }
+  .btn:active { background: var(--green-dark); }
+  .btn.secondary { background: #fff; color: var(--green-dark); border: 1px solid var(--green); }
+  .btn.ghost { background: none; color: var(--sub); border: 1px solid var(--border); width: auto; margin-top: 0; padding: 8px 12px; font-size: 13px; }
+  .btn.danger { background: var(--danger); }
+  .btn:disabled { opacity: 0.5; }
+
+  .hint { font-size: 12px; color: var(--sub); margin-top: 4px; }
+
+  .tool-hint {
+    background: var(--green-light); border-radius: 9px; padding: 8px 10px; font-size: 12.5px;
+    margin-top: 6px; color: #1b5e20; line-height: 1.5;
+  }
+
+  .search-bar { display: flex; gap: 8px; margin-bottom: 12px; }
+  .search-bar input { flex: 1; }
+  .filter-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+
+  .tool-card { border-left: 4px solid var(--green); }
+  .tool-card .tool-name { font-size: 15.5px; font-weight: 700; }
+  .tool-card .tool-meta { font-size: 12px; color: var(--sub); margin-top: 2px; }
+  .loc-list { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .loc-chip {
+    background: var(--green-light); color: var(--green-dark); border-radius: 20px;
+    padding: 5px 12px; font-size: 12.5px; font-weight: 600;
+  }
+  .loc-chip.neg { background: #ffebee; color: var(--danger); }
+  .loc-chip.zero { background: #f1f1f1; color: var(--sub); }
+  .no-loc { font-size: 12.5px; color: var(--sub); margin-top: 8px; }
+  .total-badge { font-size: 11.5px; color: var(--sub); }
+  .total-mismatch { color: var(--warn); font-weight: 700; }
+
+  .hist-item { border-bottom: 1px solid var(--border); padding: 10px 0; font-size: 13.5px; }
+  .hist-item:last-child { border-bottom: none; }
+  .hist-top { display: flex; justify-content: space-between; align-items: baseline; }
+  .hist-tool { font-weight: 700; }
+  .hist-date { font-size: 12px; color: var(--sub); }
+  .hist-route { margin-top: 4px; color: var(--ink); }
+  .hist-route b { color: var(--green-dark); }
+  .hist-sub { font-size: 12px; color: var(--sub); margin-top: 3px; }
+
+  .tool-list-item { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .tool-list-item:last-child { border-bottom: none; }
+  .tool-list-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .tool-list-row .name { font-weight: 700; font-size: 14.5px; }
+  .tool-list-row .cat { font-size: 11.5px; color: var(--sub); }
+
+  .site-check-item { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .site-check-item:last-child { border-bottom: none; }
+  .site-check-label { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+  .site-check-label input[type="checkbox"] { width: 20px; height: 20px; flex: none; accent-color: var(--green); }
+  .site-check-note { margin-top: 6px; font-size: 13.5px; padding: 8px 10px; }
+
+  .modal-overlay {
+    position: absolute; inset: 0; background: rgba(0,0,0,0.45); z-index: 50;
+    display: flex; align-items: flex-start; justify-content: center;
+  }
+  .modal-overlay.hidden { display: none; }
+  .modal {
+    background: #fff; width: 100%; max-width: 720px; border-radius: 16px;
+    margin: max(18px, env(safe-area-inset-top)) 12px 18px;
+    padding: 18px 16px;
+    max-height: 88vh; overflow-y: auto;
+  }
+  .modal h2 { margin-top: 0; font-size: 16px; }
+  .modal-close-row { display: flex; justify-content: flex-end; margin-top: 12px; gap: 8px; }
+
+  .empty-state { text-align: center; color: var(--sub); padding: 30px 10px; font-size: 13.5px; }
+
+  .autocomplete { position: relative; }
+  .autocomplete-menu {
+    position: absolute; top: 100%; left: 0; right: 0; z-index: 30;
+    background: #fff; border: 1px solid var(--green); border-top: none;
+    border-radius: 0 0 9px 9px; max-height: 180px; overflow-y: auto;
+    list-style: none; margin: 0; padding: 4px 0;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+  }
+  .autocomplete-menu[hidden] { display: none; }
+  .autocomplete-menu li { padding: 9px 12px; font-size: 15px; cursor: pointer; }
+  .autocomplete-menu li:hover, .autocomplete-menu li.active { background: var(--green-light); }
+
+  @media (min-width: 760px) {
+    nav.tabs { top: 58px; }
+    .row2 { grid-template-columns: 1fr 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div>
+      <div class="sub" id="syncStatus">読み込み中...</div>
+    </div>
+    <button class="icon-btn" id="btnRefresh" aria-label="更新">↻</button>
+  </header>
+
+  <nav class="tabs">
+    <button data-tab="record" class="active">記録</button>
+    <button data-tab="location">現在地</button>
+    <button data-tab="site">現場状況</button>
+    <button data-tab="history">履歴</button>
+    <button data-tab="tools">道具</button>
+  </nav>
+
+  <main>
+    <div id="globalBanner"></div>
+
+    <!-- 記録タブ -->
+    <section class="view active" id="view-record">
+      <div class="card">
+        <h2>移動を記録する</h2>
+        <form id="moveForm">
+          <div class="row2">
+            <div>
+              <label for="f-major">大分類</label>
+              <select id="f-major"><option value="">大分類: すべて</option></select>
+            </div>
+            <div>
+              <label for="f-minor">小分類</label>
+              <select id="f-minor"><option value="">小分類: すべて</option></select>
+            </div>
+          </div>
+
+          <label for="f-tool">道具 <span style="color:var(--danger)">*</span></label>
+          <select id="f-tool" required></select>
+          <div id="toolHint"></div>
+
+          <div class="row2">
+            <div>
+              <label for="f-from">移動元 <span style="color:var(--danger)">*</span></label>
+              <select id="f-from" required><option value="">道具を選択してください</option></select>
+            </div>
+            <div>
+              <label for="f-qty">数量 <span style="color:var(--danger)">*</span></label>
+              <input type="number" id="f-qty" min="1" step="1" inputmode="numeric" required />
+            </div>
+          </div>
+
+          <label for="f-to">移動先 <span style="color:var(--danger)">*</span></label>
+          <div class="autocomplete">
+            <input type="text" id="f-to" required placeholder="例: 館ノ内" autocomplete="off" />
+            <ul class="autocomplete-menu" id="toSuggestList" hidden></ul>
+          </div>
+
+          <label for="f-date">移動日 <span style="color:var(--danger)">*</span></label>
+          <input type="date" id="f-date" required />
+
+          <div class="row2">
+            <div>
+              <label for="f-worker">移動者 <span style="color:var(--danger)">*</span></label>
+              <input type="text" id="f-worker" placeholder="例: 原田" required />
+            </div>
+            <div>
+              <label for="f-recorder">記録者 <span style="color:var(--danger)">*</span></label>
+              <input type="text" id="f-recorder" placeholder="例: 原田" required />
+            </div>
+          </div>
+
+          <label for="f-note">備考</label>
+          <textarea id="f-note" placeholder="任意"></textarea>
+
+          <button type="submit" class="btn" id="btnSubmitMove">この内容で記録する</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- 現在地タブ -->
+    <section class="view" id="view-location">
+      <div class="search-bar">
+        <input type="text" id="locSearch" placeholder="道具名で検索" />
+        <button type="button" class="btn ghost" id="btnLocSearchClear">クリア</button>
+      </div>
+      <div class="filter-row">
+        <select id="locMajorFilter"><option value="">大分類: すべて</option></select>
+        <select id="locMinorFilter"><option value="">小分類: すべて</option></select>
+      </div>
+      <button type="button" class="btn secondary" id="btnLocCsv" style="margin-bottom:14px;">CSV出力</button>
+      <div id="locationList"></div>
+    </section>
+
+    <!-- 現場状況タブ -->
+    <section class="view" id="view-site">
+      <div class="card">
+        <label for="siteSelect">現場を選択</label>
+        <select id="siteSelect"><option value="">選択してください</option></select>
+        <label for="siteCheckerName">チェック者</label>
+        <input type="text" id="siteCheckerName" placeholder="例: 原田" />
+        <button type="button" class="btn" id="btnSiteCheckSubmit">確認結果を送信</button>
+      </div>
+      <div id="siteList"></div>
+    </section>
+
+    <!-- 履歴タブ -->
+    <section class="view" id="view-history">
+      <div class="search-bar">
+        <input type="text" id="histSearch" placeholder="道具名・場所・移動者で検索" />
+        <button type="button" class="btn ghost" id="btnHistCsv">CSV出力</button>
+      </div>
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div id="historyList" style="padding: 4px 14px;"></div>
+      </div>
+    </section>
+
+    <!-- 道具タブ -->
+    <section class="view" id="view-tools">
+      <button class="btn secondary" id="btnAddTool" style="margin-bottom:14px;">＋ 道具を追加</button>
+      <div id="toolsList"></div>
+    </section>
+  </main>
+</div>
+
+<!-- 道具編集モーダル -->
+<div class="modal-overlay hidden" id="toolModal">
+  <div class="modal">
+    <h2 id="toolModalTitle">道具の編集</h2>
+    <form id="toolForm">
+      <div class="row2">
+        <div>
+          <label for="t-major">大分類</label>
+          <div class="autocomplete">
+            <input type="text" id="t-major" autocomplete="off" />
+            <ul class="autocomplete-menu" id="tMajorSuggestList" hidden></ul>
+          </div>
+        </div>
+        <div>
+          <label for="t-minor">小分類</label>
+          <div class="autocomplete">
+            <input type="text" id="t-minor" autocomplete="off" />
+            <ul class="autocomplete-menu" id="tMinorSuggestList" hidden></ul>
+          </div>
+        </div>
+      </div>
+      <label for="t-name">道具名 <span style="color:var(--danger)">*</span></label>
+      <input type="text" id="t-name" required />
+      <label for="t-storage">未使用時保管場所</label>
+      <div class="autocomplete">
+        <input type="text" id="t-storage" autocomplete="off" placeholder="例: 館ノ内" />
+        <ul class="autocomplete-menu" id="tStorageSuggestList" hidden></ul>
+      </div>
+      <div class="row2">
+        <div>
+          <label for="t-total">総数</label>
+          <input type="number" id="t-total" min="0" step="1" />
+        </div>
+        <div>
+          <label for="t-order">表示順</label>
+          <input type="number" id="t-order" min="1" step="1" />
+        </div>
+      </div>
+      <label for="t-note">備考</label>
+      <textarea id="t-note"></textarea>
+      <div class="modal-close-row">
+        <button type="button" class="btn secondary" id="btnCloseTool" style="width:auto;">閉じる</button>
+        <button type="submit" class="btn" style="width:auto;">保存する</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  const LS_CACHE = 'dougu_kanri_cache_v1';
+  const LS_LASTNAME = 'dougu_kanri_last_name';
+
+  const state = {
+    tools: [],
+    history: [],
+    siteChecks: [],
+    ledger: {},
+    editingToolRow: null,
+  };
+
+  // ---------- utility ----------
+  function $(sel) { return document.querySelector(sel); }
+  function $all(sel) { return Array.from(document.querySelectorAll(sel)); }
+  function todayStr() {
+    const d = new Date();
+    const pad = (n) => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  }
+  function parseMoveDate(v) {
+    if (!v) return null;
+    if (v instanceof Date) return v;
+    const s = String(v).trim();
+    const m = s.match(/^(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+    if (m) return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+    const d = new Date(s);
+    return isNaN(d.getTime()) ? null : d;
+  }
+  function fmtDate(d) {
+    if (!d) return '';
+    const pad = (n) => String(n).padStart(2, '0');
+    return `${d.getFullYear()}/${pad(d.getMonth() + 1)}/${pad(d.getDate())}`;
+  }
+  function escapeHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    }[c]));
+  }
+  function showBanner(msg, type) {
+    const cls = type === true || type === 'error' ? ' error' : type === 'success' ? ' success' : '';
+    $('#globalBanner').innerHTML = msg ? `<div class="banner${cls}">${escapeHtml(msg)}</div>` : '';
+  }
+
+  // ---------- server bridge (google.script.run) ----------
+  function callServer(fnName, ...args) {
+    return new Promise((resolve, reject) => {
+      google.script.run
+        .withSuccessHandler(resolve)
+        .withFailureHandler((err) => reject(new Error(err && err.message ? err.message : String(err))))
+        [fnName](...args);
+    });
+  }
+
+  // ---------- data load ----------
+  async function loadData(silent) {
+    if (!silent) $('#syncStatus').textContent = '読み込み中...';
+    try {
+      const json = await callServer('getData');
+      state.tools = json.tools || [];
+      state.history = json.history || [];
+      state.siteChecks = json.siteChecks || [];
+      localStorage.setItem(LS_CACHE, JSON.stringify({ tools: state.tools, history: state.history, siteChecks: state.siteChecks, at: Date.now() }));
+      state.ledger = computeLedger(state.tools, state.history);
+      showBanner('');
+      const now = new Date();
+      $('#syncStatus').textContent = '最終更新 ' + now.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+      renderAll();
+    } catch (err) {
+      const cached = localStorage.getItem(LS_CACHE);
+      if (cached) {
+        const c = JSON.parse(cached);
+        state.tools = c.tools || [];
+        state.history = c.history || [];
+        state.siteChecks = c.siteChecks || [];
+        state.ledger = computeLedger(state.tools, state.history);
+        renderAll();
+        showBanner('通信エラーのため前回取得したデータを表示しています: ' + err.message, true);
+      } else {
+        showBanner('データ取得に失敗しました: ' + err.message, true);
+      }
+      $('#syncStatus').textContent = 'オフライン';
+    }
+  }
+
+  // ---------- ledger (現在地の集計) ----------
+  function computeLedger(tools, history) {
+    const map = {};
+    tools.forEach((t) => {
+      const name = t['道具名'];
+      if (!name) return;
+      map[name] = {
+        locations: {}, lastDate: null,
+        total: Number(t['総数']) || 0,
+        major: t['大分類'] || '', minor: t['小分類'] || '',
+        order: Number(t['表示順']) || 999, note: t['備考'] || '', __row: t.__row,
+      };
+    });
+    const sorted = [...history].sort((a, b) => {
+      const da = parseMoveDate(a['移動日']) || new Date(a['作成日時'] || 0);
+      const db = parseMoveDate(b['移動日']) || new Date(b['作成日時'] || 0);
+      if (da - db !== 0) return da - db;
+      return new Date(a['作成日時'] || 0) - new Date(b['作成日時'] || 0);
+    });
+    sorted.forEach((h) => {
+      const name = h['道具名'];
+      if (!name) return;
+      if (!map[name]) {
+        map[name] = { locations: {}, lastDate: null, total: null, major: '', minor: 'その他', order: 999, note: '' };
+      }
+      const qty = Number(h['数']) || 0;
+      const from = String(h['移動元'] || '').trim();
+      const to = String(h['移動先'] || '').trim();
+      if (from) map[name].locations[from] = (map[name].locations[from] || 0) - qty;
+      if (to) map[name].locations[to] = (map[name].locations[to] || 0) + qty;
+      const d = parseMoveDate(h['移動日']);
+      if (d && (!map[name].lastDate || d > map[name].lastDate)) map[name].lastDate = d;
+    });
+    return map;
+  }
+
+  // ---------- render: tabs ----------
+  function switchTab(tab) {
+    $all('nav.tabs button').forEach((b) => b.classList.toggle('active', b.dataset.tab === tab));
+    $all('.view').forEach((v) => v.classList.toggle('active', v.id === 'view-' + tab));
+  }
+
+  function renderAll() {
+    renderRecordFilters();
+    renderToolSelect();
+    renderLocationFilters();
+    renderLocationTab();
+    renderSiteSelect();
+    renderSiteTab();
+    renderHistoryTab();
+    renderToolsTab();
+  }
+
+  // 大分類・小分類の並び順も、その中に含まれる道具の表示順の最小値で決める
+  // (シートの行位置ではなく表示順を正として並べることで、新規追加した
+  //  カテゴリでも表示順の値通りの位置に並ぶようにする)
+  function sortedTools() {
+    const majorMinOrder = {};
+    const minorMinOrder = {};
+    state.tools.forEach((t) => {
+      const maj = t['大分類'] || 'その他';
+      const min = maj + ' ' + (t['小分類'] || '');
+      const o = Number(t['表示順']);
+      const ov = isNaN(o) ? Infinity : o;
+      if (!(maj in majorMinOrder) || ov < majorMinOrder[maj]) majorMinOrder[maj] = ov;
+      if (!(min in minorMinOrder) || ov < minorMinOrder[min]) minorMinOrder[min] = ov;
+    });
+    return [...state.tools].sort((a, b) => {
+      const amaj = a['大分類'] || 'その他';
+      const bmaj = b['大分類'] || 'その他';
+      if (amaj !== bmaj) return majorMinOrder[amaj] - majorMinOrder[bmaj];
+      const amin = amaj + ' ' + (a['小分類'] || '');
+      const bmin = bmaj + ' ' + (b['小分類'] || '');
+      if (amin !== bmin) return minorMinOrder[amin] - minorMinOrder[bmin];
+      const ao = Number(a['表示順']);
+      const bo = Number(b['表示順']);
+      if (!isNaN(ao) && !isNaN(bo) && ao !== bo) return ao - bo;
+      return (a.__row || 0) - (b.__row || 0);
+    });
+  }
+
+  function renderToolSelect() {
+    const sel = $('#f-tool');
+    const prev = sel.value;
+    const majorFilter = $('#f-major').value;
+    const minorFilter = $('#f-minor').value;
+    sel.innerHTML = '<option value="">選択してください</option>';
+    let curMajor = null, group = null;
+    const filtered = sortedTools().filter((t) => {
+      if (majorFilter && (t['大分類'] || 'その他') !== majorFilter) return false;
+      if (minorFilter && (t['小分類'] || '') !== minorFilter) return false;
+      return true;
+    });
+    filtered.forEach((t) => {
+      const major = t['大分類'] || 'その他';
+      if (major !== curMajor) {
+        group = document.createElement('optgroup');
+        group.label = major;
+        sel.appendChild(group);
+        curMajor = major;
+      }
+      const opt = document.createElement('option');
+      opt.value = t['道具名'];
+      opt.textContent = t['道具名'];
+      group.appendChild(opt);
+    });
+    if (prev && Array.from(sel.options).some((o) => o.value === prev)) {
+      // 前に選んでいた道具が絞り込み後も候補にあれば、それを維持する
+      sel.value = prev;
+    } else if ((majorFilter || minorFilter) && filtered.length === 1) {
+      // 大分類・小分類の絞り込みで道具が1つに決まったら、自動で選択する
+      sel.value = filtered[0]['道具名'];
+    } else {
+      sel.value = '';
+    }
+    updateToolHint();
+  }
+
+  // 入力補助の候補リスト(iOS Safariはdatalistを表示しないため自前で候補を出す)。
+  // inputSel/menuSelの要素に、getOptions()が返す候補で入力補助を付ける。
+  function setupAutocomplete(inputSel, menuSel, getOptions) {
+    const input = $(inputSel);
+    const menu = $(menuSel);
+    function show() {
+      const q = input.value.trim();
+      const all = getOptions();
+      const matches = (q ? all.filter((l) => l.includes(q)) : all).slice(0, 20);
+      if (!matches.length) { menu.hidden = true; menu.innerHTML = ''; return; }
+      menu.innerHTML = matches.map((l) => `<li>${escapeHtml(l)}</li>`).join('');
+      menu.hidden = false;
+    }
+    function hide() { menu.hidden = true; }
+    input.addEventListener('input', show);
+    input.addEventListener('focus', show);
+    input.addEventListener('blur', () => setTimeout(hide, 150));
+    menu.addEventListener('mousedown', (e) => {
+      const li = e.target.closest('li');
+      if (!li) return;
+      e.preventDefault();
+      input.value = li.textContent;
+      hide();
+      input.dispatchEvent(new Event('input'));
+    });
+  }
+
+  function uniqueMajors() {
+    return Array.from(new Set(state.tools.map((t) => t['大分類']).filter(Boolean))).sort();
+  }
+
+  function uniqueMinors(majorFilter) {
+    const set = new Set();
+    state.tools.forEach((t) => {
+      if (!t['小分類']) return;
+      if (majorFilter && t['大分類'] !== majorFilter) return;
+      set.add(t['小分類']);
+    });
+    return Array.from(set).sort();
+  }
+
+  function uniqueStorageLocations() {
+    return Array.from(new Set(state.tools.map((t) => t['未使用時保管場所']).filter(Boolean))).sort();
+  }
+
+  // 道具を選ぶと、現在の保管場所一覧を表示し、移動元をその中から選ばせる
+  function updateToolHint() {
+    const name = $('#f-tool').value;
+    const box = $('#toolHint');
+    const fromSel = $('#f-from');
+    const info = name ? state.ledger[name] : null;
+    const locs = info ? Object.entries(info.locations).filter(([, q]) => q > 0).sort((a, b) => b[1] - a[1]) : [];
+
+    if (!name) {
+      box.innerHTML = '';
+      fromSel.innerHTML = '<option value="">道具を選択してください</option>';
+      updateQtyMax();
+      return;
+    }
+    if (!locs.length) {
+      box.innerHTML = `<div class="tool-hint">現在の保管場所の記録はありません(総数: ${info && info.total != null ? info.total : '-'})</div>`;
+      fromSel.innerHTML = '<option value="">保管場所の記録がありません</option>';
+      updateQtyMax();
+      return;
+    }
+    box.innerHTML = `<div class="tool-hint">所有している場所 → ${locs.map(([loc, q]) => `${escapeHtml(loc)}: ${q}`).join(' / ')}(総数: ${info.total ?? '-'})</div>`;
+    const prev = fromSel.value;
+    fromSel.innerHTML = '<option value="">選択してください</option>' +
+      locs.map(([loc, q]) => `<option value="${escapeHtml(loc)}">${escapeHtml(loc)}(${q}個)</option>`).join('');
+    fromSel.value = locs.some(([loc]) => loc === prev) ? prev : '';
+    updateQtyMax();
+  }
+
+  function updateQtyMax() {
+    const name = $('#f-tool').value;
+    const from = $('#f-from').value;
+    const qtyInput = $('#f-qty');
+    const info = name ? state.ledger[name] : null;
+    const avail = info && from ? info.locations[from] : null;
+    if (avail != null && avail > 0) qtyInput.max = avail;
+    else qtyInput.removeAttribute('max');
+  }
+
+  // 大分類・小分類の絞り込み用プルダウンを共通ロジックで構築する(小分類は選んだ大分類に連動)
+  function populateMajorMinorFilters(majorSel, minorSel) {
+    const prevMajor = majorSel.value;
+    const prevMinor = minorSel.value;
+    const majors = [];
+    const minorsByMajor = {};
+    sortedTools().forEach((t) => {
+      const maj = t['大分類'] || 'その他';
+      const min = t['小分類'] || '';
+      if (!majors.includes(maj)) majors.push(maj);
+      if (!minorsByMajor[maj]) minorsByMajor[maj] = [];
+      if (min && !minorsByMajor[maj].includes(min)) minorsByMajor[maj].push(min);
+    });
+    majorSel.innerHTML = '<option value="">大分類: すべて</option>' +
+      majors.map((m) => `<option value="${escapeHtml(m)}">${escapeHtml(m)}</option>`).join('');
+    majorSel.value = majors.includes(prevMajor) ? prevMajor : '';
+    const minorOptions = majorSel.value ? (minorsByMajor[majorSel.value] || []) : [].concat(...Object.values(minorsByMajor));
+    const uniqueMinors = [...new Set(minorOptions)];
+    minorSel.innerHTML = '<option value="">小分類: すべて</option>' +
+      uniqueMinors.map((m) => `<option value="${escapeHtml(m)}">${escapeHtml(m)}</option>`).join('');
+    minorSel.value = uniqueMinors.includes(prevMinor) ? prevMinor : '';
+  }
+
+  // ---------- 記録タブ: 道具の絞り込み ----------
+  function renderRecordFilters() {
+    populateMajorMinorFilters($('#f-major'), $('#f-minor'));
+  }
+
+  // ---------- 現在地タブ ----------
+  function renderLocationFilters() {
+    populateMajorMinorFilters($('#locMajorFilter'), $('#locMinorFilter'));
+  }
+
+  function filteredLocationNames(filterText) {
+    const q = (filterText ?? $('#locSearch').value ?? '').trim();
+    const majorFilter = $('#locMajorFilter').value;
+    const minorFilter = $('#locMinorFilter').value;
+    const orderedNames = sortedTools().map((t) => t['道具名']);
+    const extraNames = Object.keys(state.ledger).filter((n) => !orderedNames.includes(n));
+    const names = orderedNames.concat(extraNames);
+    return names.filter((n) => {
+      const info = state.ledger[n];
+      if (q && !n.includes(q)) return false;
+      if (majorFilter && info.major !== majorFilter) return false;
+      if (minorFilter && info.minor !== minorFilter) return false;
+      return true;
+    });
+  }
+
+  function renderLocationTab(filterText) {
+    const wrap = $('#locationList');
+    const filtered = filteredLocationNames(filterText);
+    if (!filtered.length) { wrap.innerHTML = '<div class="empty-state">該当する道具がありません</div>'; return; }
+    wrap.innerHTML = filtered.map((name) => {
+      const info = state.ledger[name];
+      const locs = Object.entries(info.locations).filter(([, v]) => v !== 0).sort((a, b) => b[1] - a[1]);
+      const mismatch = info.total != null && locs.some(([, v]) => v < 0);
+      const chips = locs.length
+        ? locs.map(([loc, v]) => `<span class="loc-chip${v < 0 ? ' neg' : ''}">${escapeHtml(loc)} ${v}</span>`).join('')
+        : '';
+      return `
+      <div class="card tool-card">
+        <div class="tool-name">${escapeHtml(name)}</div>
+        <div class="tool-meta">${escapeHtml(info.major)}${info.minor ? ' / ' + escapeHtml(info.minor) : ''}
+          ・ 総数 <span class="total-badge${mismatch ? ' total-mismatch' : ''}">${info.total ?? '-'}</span>
+          ${info.lastDate ? ' ・ 最終移動 ' + fmtDate(info.lastDate) : ''}
+        </div>
+        ${chips ? `<div class="loc-list">${chips}</div>` : `<div class="no-loc">移動履歴がまだありません</div>`}
+      </div>`;
+    }).join('');
+  }
+
+  // 道具が1つも残っていない(全道具で数量0以下の)場所は選択肢から除く
+  // (記録タブの移動先候補・現場状況タブの現場選択で共通利用)
+  function locationsWithStock() {
+    const set = new Set();
+    Object.values(state.ledger).forEach((info) => {
+      Object.entries(info.locations).forEach(([loc, qty]) => {
+        if (qty > 0) set.add(loc);
+      });
+    });
+    return Array.from(set).sort();
+  }
+
+  // ---------- 現場状況タブ ----------
+  function renderSiteSelect() {
+    const sel = $('#siteSelect');
+    const prev = sel.value;
+    const locs = locationsWithStock();
+    sel.innerHTML = '<option value="">選択してください</option>' +
+      locs.map((l) => `<option value="${escapeHtml(l)}">${escapeHtml(l)}</option>`).join('');
+    sel.value = locs.includes(prev) ? prev : '';
+  }
+
+  function renderSiteTab() {
+    const loc = $('#siteSelect').value;
+    const wrap = $('#siteList');
+    if (!loc) { wrap.innerHTML = '<div class="empty-state">現場を選択してください</div>'; return; }
+    const order = sortedTools().map((t) => t['道具名']);
+    const items = [];
+    Object.keys(state.ledger).forEach((name) => {
+      const info = state.ledger[name];
+      const qty = info.locations[loc] || 0;
+      if (qty > 0) items.push({ name, qty, major: info.major, minor: info.minor });
+    });
+    items.sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name));
+    const totalQty = items.reduce((s, it) => s + it.qty, 0);
+
+    const checklistHtml = !items.length
+      ? '<div class="empty-state">この現場に残っている道具はありません</div>'
+      : `<div class="hint" style="margin-bottom:10px;">${items.length}種類 ・ 合計${totalQty}個 ・ 数が正しいか確認できたものにチェックを入れて確認結果送信ボタンを押してください。<br>数が正しくないものなど不一致があればその道具はチェックをつけず、実際の状況を確認し正しい移動記録をつけてからチェックし直してください</div>` +
+        `<div class="card" style="padding-top:6px;">` +
+        items.map((it) => `
+          <div class="site-check-item">
+            <label class="site-check-label">
+              <input type="checkbox" class="site-check-box" data-tool="${escapeHtml(it.name)}" />
+              <div style="flex:1;">
+                <div class="name">${escapeHtml(it.name)}</div>
+                <div class="cat">${escapeHtml(it.major)}${it.minor ? ' / ' + escapeHtml(it.minor) : ''} ・ 在庫${it.qty}個</div>
+              </div>
+            </label>
+            <input type="text" class="site-check-note" data-tool="${escapeHtml(it.name)}" placeholder="備考(任意)" />
+          </div>`).join('') +
+        `</div>`;
+
+    wrap.innerHTML = checklistHtml + renderSiteCheckHistoryHtml(loc);
+  }
+
+  // 選択中の現場について、これまでのチェック結果を新しい順に表示する
+  function renderSiteCheckHistoryHtml(loc) {
+    const rows = state.siteChecks
+      .filter((c) => c['場所'] === loc)
+      .sort((a, b) => new Date(b['チェック日時'] || 0) - new Date(a['チェック日時'] || 0));
+    if (!rows.length) {
+      return `<h2 style="margin:18px 0 8px; font-size:14px; color:var(--sub);">チェック履歴</h2>` +
+        `<div class="empty-state">この現場のチェック履歴はまだありません</div>`;
+    }
+    return `<h2 style="margin:18px 0 8px; font-size:14px; color:var(--sub);">チェック履歴</h2>` +
+      `<div class="card" style="padding:0; overflow:hidden;">` +
+      `<div style="padding:4px 14px;">` +
+      rows.map((c) => {
+        const d = new Date(c['チェック日時'] || 0);
+        const dateStr = isNaN(d.getTime()) ? escapeHtml(c['チェック日時'] || '') : fmtDate(d) + ' ' + d.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+        return `
+        <div class="hist-item">
+          <div class="hist-top">
+            <span class="hist-tool">${escapeHtml(c['道具'])}</span>
+            <span class="hist-date">${dateStr}</span>
+          </div>
+          <div class="hist-route">数量 <b>${c['数量'] != null && c['数量'] !== '' ? c['数量'] : '-'}個</b></div>
+          <div class="hist-sub">チェック者: ${escapeHtml(c['チェック者'] || '-')}${c['備考'] ? ' ／ ' + escapeHtml(c['備考']) : ''}</div>
+        </div>`;
+      }).join('') +
+      `</div></div>`;
+  }
+
+  // チェックが入っている道具だけを現場状況確認シートに送信する
+  async function submitSiteCheck() {
+    const place = $('#siteSelect').value;
+    const checker = $('#siteCheckerName').value.trim();
+    if (!place) return showBanner('現場を選択してください', true);
+    if (!checker) return showBanner('チェック者を入力してください', true);
+
+    const items = [];
+    $all('.site-check-box').forEach((box) => {
+      if (!box.checked) return;
+      const toolName = box.dataset.tool;
+      const noteInput = document.querySelector(`.site-check-note[data-tool="${CSS.escape(toolName)}"]`);
+      const info = state.ledger[toolName];
+      const qty = info ? (info.locations[place] || 0) : '';
+      items.push({
+        toolName,
+        qty,
+        note: noteInput ? noteInput.value.trim() : '',
+      });
+    });
+    if (!items.length) return showBanner('チェックが入っている道具がありません', true);
+
+    const btn = $('#btnSiteCheckSubmit');
+    btn.disabled = true; btn.textContent = '送信中...';
+    try {
+      await callServer('submitSiteCheck', { place, checker, items });
+      localStorage.setItem(LS_LASTNAME, checker);
+      await loadData(true);
+      showBanner(`${items.length}件の確認結果を送信しました`, 'success');
+    } catch (err) {
+      showBanner('送信に失敗しました: ' + err.message, true);
+    } finally {
+      btn.disabled = false; btn.textContent = '確認結果を送信';
+    }
+  }
+
+  // ---------- 履歴タブ ----------
+  function historySorted() {
+    return [...state.history].sort((a, b) => {
+      const da = new Date(a['作成日時'] || a['移動日'] || 0);
+      const db = new Date(b['作成日時'] || b['移動日'] || 0);
+      return db - da;
+    });
+  }
+
+  function filteredHistory(filterText) {
+    const q = (filterText ?? $('#histSearch').value ?? '').trim();
+    return historySorted().filter((h) => {
+      if (!q) return true;
+      return [h['道具名'], h['移動元'], h['移動先'], h['移動者'], h['記録者']]
+        .some((v) => String(v || '').includes(q));
+    });
+  }
+
+  function renderHistoryTab(filterText) {
+    const wrap = $('#historyList');
+    const rows = filteredHistory(filterText);
+    if (!rows.length) { wrap.innerHTML = '<div class="empty-state">履歴がありません</div>'; return; }
+    wrap.innerHTML = rows.map((h) => {
+      const d = parseMoveDate(h['移動日']);
+      return `
+      <div class="hist-item">
+        <div class="hist-top">
+          <span class="hist-tool">${escapeHtml(h['道具名'])}</span>
+          <span class="hist-date">${d ? fmtDate(d) : escapeHtml(h['移動日'])}</span>
+        </div>
+        <div class="hist-route"><b>${h['数']}個</b>　${escapeHtml(h['移動元'])} → ${escapeHtml(h['移動先'])}</div>
+        <div class="hist-sub">移動者: ${escapeHtml(h['移動者'] || '-')} ／ 記録者: ${escapeHtml(h['記録者'] || '-')}${h['備考'] ? ' ／ ' + escapeHtml(h['備考']) : ''}</div>
+      </div>`;
+    }).join('');
+  }
+
+  // headerRowとdataRows(配列の配列)からCSVファイルを組み立ててダウンロードする
+  function downloadCsv(filenamePrefix, headerRow, dataRows) {
+    const lines = [headerRow.join(',')];
+    dataRows.forEach((row) => lines.push(row.map(csvField).join(',')));
+    const csv = '\uFEFF' + lines.join('\r\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const now = new Date();
+    const pad = (n) => String(n).padStart(2, '0');
+    a.href = url;
+    a.download = `${filenamePrefix}_${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  function csvField(v) {
+    const s = String(v == null ? '' : v);
+    return /[",\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }
+
+  // 検索中であればその絞り込み結果、そうでなければ全履歴をCSVとしてダウンロードする
+  function exportHistoryCsv() {
+    const rows = filteredHistory();
+    if (!rows.length) return showBanner('出力できる履歴がありません', true);
+    const dataRows = rows.map((h) => {
+      const d = parseMoveDate(h['移動日']);
+      return [
+        h['記録者'], h['移動者'], h['道具名'], h['数'],
+        d ? fmtDate(d) : h['移動日'],
+        h['移動元'], h['移動先'], h['備考'] || '',
+      ];
+    });
+    downloadCsv('移動履歴', ['記録者', '移動者', '道具名', '数', '移動日', '移動元', '移動先', '備考'], dataRows);
+  }
+
+  // 現在地タブで絞り込み中の道具について、道具×場所ごとに1行としてCSVをダウンロードする
+  function exportLocationCsv() {
+    const names = filteredLocationNames();
+    if (!names.length) return showBanner('出力できる道具がありません', true);
+    const dataRows = [];
+    names.forEach((name) => {
+      const info = state.ledger[name];
+      const locs = Object.entries(info.locations).filter(([, v]) => v !== 0).sort((a, b) => b[1] - a[1]);
+      const lastDate = info.lastDate ? fmtDate(info.lastDate) : '';
+      if (!locs.length) {
+        dataRows.push([info.major, info.minor, name, '', '', info.total ?? '', lastDate]);
+        return;
+      }
+      locs.forEach(([loc, qty]) => {
+        dataRows.push([info.major, info.minor, name, loc, qty, info.total ?? '', lastDate]);
+      });
+    });
+    downloadCsv('現在地', ['大分類', '小分類', '道具名', '場所', '数', '総数', '最終移動日'], dataRows);
+  }
+
+  // ---------- 道具タブ ----------
+  function renderToolsTab() {
+    const wrap = $('#toolsList');
+    const tools = sortedTools();
+    if (!tools.length) { wrap.innerHTML = '<div class="empty-state">道具が登録されていません</div>'; return; }
+    let curMajor = null;
+    let html = '';
+    tools.forEach((t) => {
+      const major = t['大分類'] || 'その他';
+      if (major !== curMajor) {
+        if (curMajor !== null) html += '</div>';
+        html += `<div class="card" style="padding-top:10px;"><h2>${escapeHtml(major)}</h2>`;
+        curMajor = major;
+      }
+      html += `
+      <div class="tool-list-item">
+        <div class="tool-list-row">
+          <div>
+            <div class="name">${escapeHtml(t['道具名'])}</div>
+            <div class="cat">${escapeHtml(t['小分類'] || '')}${t['未使用時保管場所'] ? ' ・ 保管場所 ' + escapeHtml(t['未使用時保管場所']) : ''}${t['備考'] ? ' ・ ' + escapeHtml(t['備考']) : ''} ・ 総数 ${t['総数'] ?? '-'}</div>
+          </div>
+          <button class="btn ghost" data-edit-tool="${t.__row}">編集</button>
+        </div>
+      </div>`;
+    });
+    html += '</div>';
+    wrap.innerHTML = html;
+  }
+
+  // ---------- events: tabs ----------
+  $all('nav.tabs button').forEach((btn) => {
+    btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+  });
+
+  $('#f-major').addEventListener('change', () => { renderRecordFilters(); renderToolSelect(); });
+  $('#f-minor').addEventListener('change', () => renderToolSelect());
+  $('#f-tool').addEventListener('change', updateToolHint);
+  $('#f-from').addEventListener('change', updateQtyMax);
+  setupAutocomplete('#f-to', '#toSuggestList', () => locationsWithStock());
+  setupAutocomplete('#t-major', '#tMajorSuggestList', () => uniqueMajors());
+  setupAutocomplete('#t-minor', '#tMinorSuggestList', () => uniqueMinors($('#t-major').value.trim()));
+  setupAutocomplete('#t-storage', '#tStorageSuggestList', () => uniqueStorageLocations());
+  $('#locSearch').addEventListener('input', () => renderLocationTab());
+  $('#btnLocSearchClear').addEventListener('click', () => {
+    $('#locSearch').value = '';
+    renderLocationTab();
+  });
+  $('#locMajorFilter').addEventListener('change', () => { renderLocationFilters(); renderLocationTab(); });
+  $('#locMinorFilter').addEventListener('change', () => renderLocationTab());
+  $('#btnLocCsv').addEventListener('click', exportLocationCsv);
+  $('#siteSelect').addEventListener('change', () => renderSiteTab());
+  $('#btnSiteCheckSubmit').addEventListener('click', submitSiteCheck);
+  $('#histSearch').addEventListener('input', () => renderHistoryTab());
+  $('#btnHistCsv').addEventListener('click', exportHistoryCsv);
+  $('#btnRefresh').addEventListener('click', () => loadData());
+
+  // ---------- form: 移動記録 ----------
+  $('#f-date').value = todayStr();
+  const lastName = localStorage.getItem(LS_LASTNAME);
+  if (lastName) { $('#f-worker').value = lastName; $('#f-recorder').value = lastName; $('#siteCheckerName').value = lastName; }
+
+  $('#moveForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = $('#btnSubmitMove');
+    const record = {
+      toolName: $('#f-tool').value,
+      qty: $('#f-qty').value,
+      moveDate: $('#f-date').value,
+      from: $('#f-from').value,
+      to: $('#f-to').value.trim(),
+      worker: $('#f-worker').value.trim(),
+      recorder: $('#f-recorder').value.trim(),
+      note: $('#f-note').value.trim(),
+    };
+    if (!record.toolName) return showBanner('道具を選択してください', true);
+    if (!record.from) return showBanner('移動元を選択してください', true);
+    if (!record.to) return showBanner('移動先を入力してください', true);
+    if (!record.qty || Number(record.qty) <= 0) return showBanner('数量は1以上で入力してください', true);
+    if (!record.moveDate) return showBanner('移動日を入力してください', true);
+    if (!record.worker) return showBanner('移動者を入力してください', true);
+    if (!record.recorder) return showBanner('記録者を入力してください', true);
+    const info = state.ledger[record.toolName];
+    const avail = info ? info.locations[record.from] : null;
+    if (avail != null && Number(record.qty) > avail) {
+      return showBanner(`${record.from} の${record.toolName}は${avail}個しかありません`, true);
+    }
+    btn.disabled = true; btn.textContent = '送信中...';
+    try {
+      await callServer('addMove', record);
+      if (record.recorder) localStorage.setItem(LS_LASTNAME, record.recorder);
+      $('#f-qty').value = ''; $('#f-to').value = ''; $('#f-note').value = '';
+      showBanner('');
+      await loadData(true);
+      switchTab('location');
+      $('#locSearch').value = record.toolName;
+      renderLocationTab(record.toolName);
+    } catch (err) {
+      showBanner('記録に失敗しました: ' + err.message, true);
+    } finally {
+      btn.disabled = false; btn.textContent = 'この内容で記録する';
+    }
+  });
+
+  // ---------- 道具編集/追加 ----------
+  function openToolModal(row) {
+    state.editingToolRow = row || null;
+    const t = row ? state.tools.find((x) => x.__row === row) : null;
+    $('#toolModalTitle').textContent = t ? '道具の編集' : '道具を追加';
+    $('#t-major').value = t ? t['大分類'] || '' : '';
+    $('#t-minor').value = t ? t['小分類'] || '' : '';
+    $('#t-name').value = t ? t['道具名'] || '' : '';
+    $('#t-storage').value = t ? t['未使用時保管場所'] || '' : '';
+    $('#t-total').value = t ? t['総数'] ?? '' : '';
+    $('#t-order').value = t ? t['表示順'] ?? '' : '';
+    $('#t-note').value = t ? t['備考'] || '' : '';
+    window.scrollTo(0, 0);
+    $('#toolModal').classList.remove('hidden');
+  }
+  $('#btnAddTool').addEventListener('click', () => openToolModal(null));
+  $('#btnCloseTool').addEventListener('click', () => $('#toolModal').classList.add('hidden'));
+  $('#toolsList').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-edit-tool]');
+    if (btn) openToolModal(Number(btn.dataset.editTool));
+  });
+  $('#toolForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const tool = {
+      major: $('#t-major').value.trim(),
+      minor: $('#t-minor').value.trim(),
+      name: $('#t-name').value.trim(),
+      storage: $('#t-storage').value.trim(),
+      total: $('#t-total').value,
+      order: $('#t-order').value,
+      note: $('#t-note').value.trim(),
+    };
+    if (!tool.name) return;
+    try {
+      if (state.editingToolRow) {
+        tool.__row = state.editingToolRow;
+        await callServer('updateTool', tool);
+      } else {
+        await callServer('addTool', tool);
+      }
+      $('#toolModal').classList.add('hidden');
+      await loadData(true);
+    } catch (err) {
+      showBanner('保存に失敗しました: ' + err.message, true);
+    }
+  });
+
+  // ---------- init ----------
+  loadData();
+})();
+</script>
+</body>
+</html>
