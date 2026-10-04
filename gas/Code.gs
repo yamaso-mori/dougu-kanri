@@ -12,7 +12,9 @@
  *    - 実行するユーザー: 自分
  *    - アクセスできるユーザー: 全員
  * 5. 発行されたウェブアプリのURL(https://script.google.com/macros/s/.../exec)を
- *    ブックマークすれば、それがそのままアプリのURLになります(GitHub等は不要)
+ *    ブックマークすれば、それがそのままアプリのURLになります
+ * 6. iPhone のホーム画面にアイコン付きで置きたい場合は、リポジトリ直下の index.html の
+ *    GAS_URL に 5 のURLを設定し、GitHub Pages のURLを「ホーム画面に追加」する
  */
 
 const SHEET_TOOLS = '道具';
@@ -29,7 +31,9 @@ const FAVICON_URL = '';
 function doGet() {
   const output = HtmlService.createHtmlOutputFromFile('Index')
     .setTitle('山創 道具管理')
-    .addMetaTag('viewport', 'width=device-width, initial-scale=1, viewport-fit=cover');
+    .addMetaTag('viewport', 'width=device-width, initial-scale=1, viewport-fit=cover')
+    // GitHub Pages の入口ページ(index.html)から iframe で埋め込めるようにする
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
   if (FAVICON_URL) output.setFaviconUrl(FAVICON_URL);
   return output;
 }
