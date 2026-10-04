@@ -7,19 +7,17 @@
  * 2. デフォルトの Code.gs の中身を全部削除し、このファイルの内容を貼り付ける
  * 3. ファイル > 新規作成 > HTML で「Index」という名前のファイルを作成し、
  *    Index.html の内容を貼り付ける(拡張子は自動で付くのでファイル名は "Index" のみ)
- * 4. プロジェクトの設定 > スクリプト プロパティ に「PASSCODE」を追加し、
- *    値にアプリの合言葉を設定する(未設定のままだとアプリは使えません)
- * 5. 保存して「デプロイ」>「新しいデプロイ」
+ * 4. 保存して「デプロイ」>「新しいデプロイ」
  *    - 種類: ウェブアプリ
  *    - 実行するユーザー: 自分
  *    - アクセスできるユーザー: 全員
- * 6. 発行されたウェブアプリのURL(https://script.google.com/macros/s/.../exec)を
+ * 5. 発行されたウェブアプリのURL(https://script.google.com/macros/s/.../exec)を
  *    ブックマークすれば、それがそのままアプリのURLになります
- * 7. iPhone のホーム画面にアイコン付きで置きたい場合は、リポジトリ直下の index.html の
- *    GAS_URL に 6 のURLを設定し、GitHub Pages のURLを「ホーム画面に追加」する
+ * 6. iPhone のホーム画面にアイコン付きで置きたい場合は、リポジトリ直下の index.html の
+ *    GAS_URL に 5 のURLを設定し、GitHub Pages のURLを「ホーム画面に追加」する
  *
  * 画面(google.script.run)から呼べるのは、名前の末尾が "_" でない関数だけ。
- * 画面に公開する関数は必ず最初に requirePasscode_ で合言葉を確認し、
+ * URLを知っていれば誰でも呼べるので、画面に公開する関数は必要最小限にし、
  * それ以外の内部関数は末尾に "_" を付けて直接呼べないようにしている。
  */
 
@@ -27,11 +25,6 @@ const SHEET_TOOLS = '道具';
 const SHEET_HISTORY = '移動履歴';
 const SHEET_LOCATIONS = '現在地';
 const SHEET_SITE_CHECK = '現場状況確認';
-
-// 合言葉を保存するスクリプト プロパティの名前
-const PROP_PASSCODE = 'PASSCODE';
-// 合言葉が違うときのエラーの目印(画面側はこの文字列で再入力画面を出す)
-const AUTH_ERROR_MARK = 'AUTH_REQUIRED';
 
 const MAX_NAME_LENGTH = 100;
 const MAX_NOTE_LENGTH = 500;
@@ -54,44 +47,30 @@ function doGet() {
   return output;
 }
 
-// ---------- 画面に公開する関数(すべて合言葉が必要) ----------
+// ---------- 画面に公開する関数 ----------
 
-function getData(passcode) {
-  requirePasscode_(passcode);
+function getData() {
   return { tools: getTools_(), history: getHistory_(), siteChecks: getSiteChecks_() };
 }
 
-function addMove(passcode, record) {
-  requirePasscode_(passcode);
+function addMove(record) {
   return withScriptLock_(() => addMoveImpl_(record));
 }
 
-function addTool(passcode, tool) {
-  requirePasscode_(passcode);
+function addTool(tool) {
   return withScriptLock_(() => addToolImpl_(tool));
 }
 
-function updateTool(passcode, tool) {
-  requirePasscode_(passcode);
+function updateTool(tool) {
   return withScriptLock_(() => updateToolImpl_(tool));
 }
 
 // 現場状況タブでチェックが入った道具だけを「現場状況確認」シートに1件ずつ記録する
-function submitSiteCheck(passcode, payload) {
-  requirePasscode_(passcode);
+function submitSiteCheck(payload) {
   return withScriptLock_(() => submitSiteCheckImpl_(payload));
 }
 
-// ---------- 合言葉・入力値の検証 ----------
-
-function requirePasscode_(passcode) {
-  const expected = String(PropertiesService.getScriptProperties().getProperty(PROP_PASSCODE) || '').trim();
-  if (!expected) throw new Error('合言葉が未設定のため利用できません。管理者に連絡してください');
-  if (String(passcode == null ? '' : passcode).trim() !== expected) {
-    Utilities.sleep(1000); // 総当たりで試されにくいよう、間違えたときは少し待たせる
-    throw new Error(AUTH_ERROR_MARK + ': 合言葉が違います');
-  }
-}
+// ---------- 入力値の検証 ----------
 
 // シートに書き込む文字列を整える。"=" などで始まる値はシート上で数式として
 // 実行されてしまうため、先頭に "'" を付けて文字列として保存する

@@ -358,30 +358,12 @@
   </div>
 </div>
 
-<!-- 合言葉入力モーダル -->
-<div class="modal-overlay hidden" id="passModal">
-  <div class="modal">
-    <h2>合言葉を入力してください</h2>
-    <form id="passForm">
-      <label for="p-pass">合言葉</label>
-      <input type="text" id="p-pass" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" required />
-      <div class="hint" id="passHint"></div>
-      <button type="submit" class="btn" id="btnPassSubmit">開く</button>
-    </form>
-  </div>
-</div>
-
 <script>
 (function () {
   'use strict';
 
   const LS_CACHE = 'dougu_kanri_cache_v1';
   const LS_LASTNAME = 'dougu_kanri_last_name';
-  const LS_PASSCODE = 'dougu_kanri_passcode';
-  // GitHub Pages の入口ページ(このアプリを iframe で表示している親ページ)
-  const PARENT_ORIGIN = 'https://yamaso-mori.github.io';
-  // サーバー(Code.gs)が合言葉違いのときに返すエラーの目印
-  const AUTH_ERROR_MARK = 'AUTH_REQUIRED';
 
   const state = {
     tools: [],
@@ -389,7 +371,6 @@
     siteChecks: [],
     ledger: {},
     editingToolRow: null,
-    passcode: '',
   };
 
   // ---------- utility ----------
@@ -425,83 +406,17 @@
   }
 
   // ---------- server bridge (google.script.run) ----------
-  // サーバー側の関数はすべて第1引数に合言葉を受け取る
   function callServer(fnName, ...args) {
     return new Promise((resolve, reject) => {
       google.script.run
         .withSuccessHandler(resolve)
-        .withFailureHandler((err) => {
-          const msg = err && err.message ? err.message : String(err);
-          if (msg.includes(AUTH_ERROR_MARK)) {
-            const authErr = new Error('合言葉が違います');
-            authErr.isAuth = true;
-            askPasscodeAgain();
-            return reject(authErr);
-          }
-          reject(new Error(msg));
-        })
-        [fnName](state.passcode, ...args);
+        .withFailureHandler((err) => reject(new Error(err && err.message ? err.message : String(err))))
+        [fnName](...args);
     });
-  }
-
-  // ---------- 合言葉 ----------
-  // iPhone では iframe 内の localStorage がアプリを閉じると消えることがあるため、
-  // 入口ページ(親ページ)にも合言葉を預けておき、手元に無ければそこから受け取る。
-  // GAS のURLを直接開いた場合は親ページが PARENT_ORIGIN ではないので何も送られない。
-  function postToParent(msg) {
-    try { window.top.postMessage(msg, PARENT_ORIGIN); } catch (e) { /* 親ページなし */ }
-  }
-
-  function savePasscode(passcode) {
-    state.passcode = passcode;
-    try {
-      if (passcode) localStorage.setItem(LS_PASSCODE, passcode);
-      else localStorage.removeItem(LS_PASSCODE);
-    } catch (e) { /* 保存できない環境では毎回入力してもらう */ }
-    postToParent({ type: 'aredoko:setPasscode', passcode: passcode });
-  }
-
-  function restorePasscode() {
-    return new Promise((resolve) => {
-      let local = '';
-      try { local = localStorage.getItem(LS_PASSCODE) || ''; } catch (e) { /* 読めなければ親に聞く */ }
-      if (local || window.top === window.self) return resolve(local);
-      const timer = setTimeout(() => finish(''), 1500);
-      function onMessage(e) {
-        if (e.origin !== PARENT_ORIGIN || e.source !== window.top) return;
-        if (!e.data || e.data.type !== 'aredoko:passcode') return;
-        finish(String(e.data.passcode || ''));
-      }
-      function finish(value) {
-        clearTimeout(timer);
-        window.removeEventListener('message', onMessage);
-        resolve(value);
-      }
-      window.addEventListener('message', onMessage);
-      postToParent({ type: 'aredoko:getPasscode' });
-    });
-  }
-
-  function showPassModal(msg) {
-    $('#passHint').textContent = msg || '';
-    $('#passModal').classList.remove('hidden');
-    $('#syncStatus').textContent = '合言葉が必要です';
-  }
-
-  // 合言葉が違っていた(または変更された)ときは、保存済みの合言葉と前回のデータを消して入力し直してもらう
-  function askPasscodeAgain() {
-    savePasscode('');
-    localStorage.removeItem(LS_CACHE);
-    state.tools = []; state.history = []; state.siteChecks = []; state.ledger = {};
-    renderAll();
-    showBanner('');
-    showPassModal('合言葉が違います。もう一度入力してください');
   }
 
   // ---------- data load ----------
-  // 取得できたら true を返す
   async function loadData(silent) {
-    if (!state.passcode) { showPassModal(); return false; }
     if (!silent) $('#syncStatus').textContent = '読み込み中...';
     try {
       const json = await callServer('getData');
@@ -514,9 +429,7 @@
       const now = new Date();
       $('#syncStatus').textContent = '最終更新 ' + now.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
       renderAll();
-      return true;
     } catch (err) {
-      if (err.isAuth) return false;
       const cached = localStorage.getItem(LS_CACHE);
       if (cached) {
         const c = JSON.parse(cached);
@@ -530,7 +443,6 @@
         showBanner('データ取得に失敗しました: ' + err.message, true);
       }
       $('#syncStatus').textContent = 'オフライン';
-      return false;
     }
   }
 
@@ -1173,31 +1085,8 @@
     }
   });
 
-  // ---------- 合言葉の入力 ----------
-  $('#passForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const passcode = $('#p-pass').value.trim();
-    if (!passcode) return;
-    const btn = $('#btnPassSubmit');
-    btn.disabled = true; btn.textContent = '確認中...';
-    $('#passHint').textContent = '';
-    state.passcode = passcode;
-    const ok = await loadData();
-    btn.disabled = false; btn.textContent = '開く';
-    if (ok) {
-      savePasscode(passcode);
-      $('#p-pass').value = '';
-      $('#passModal').classList.add('hidden');
-    } else if (!$('#passHint').textContent) {
-      $('#passHint').textContent = '確認できませんでした。通信状況を確認してもう一度お試しください';
-    }
-  });
-
   // ---------- init ----------
-  restorePasscode().then((passcode) => {
-    state.passcode = passcode;
-    loadData();
-  });
+  loadData();
 })();
 </script>
 </body>

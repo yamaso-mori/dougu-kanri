@@ -27,48 +27,16 @@
   // Apps Script のウェブアプリURL(https://script.google.com/macros/s/.../exec)。
   // デプロイし直してURLが変わったら、ここだけ書き換える。
   const GAS_URL = 'https://script.google.com/macros/s/AKfycbz4qabjHT-5Lx0sX9HWgTUOxhvUzCuIju4O3pC37jePI4Xt9iCUiZhyR8yhtTNhYqjRqw/exec';
-  const LS_PASSCODE = 'aredoko_passcode';
-
-  let frame = null;
 
   function showNotice(html) {
     document.body.innerHTML = '<div class="notice">' + html + '</div>';
   }
 
-  // target が win の中(入れ子の iframe を含む)にあるウィンドウかどうか
-  function isInside(win, target, depth) {
-    if (win === target) return true;
-    if (depth > 4) return false;
-    try {
-      for (let i = 0; i < win.length; i++) {
-        if (isInside(win[i], target, depth + 1)) return true;
-      }
-    } catch (e) { /* たどれない場合は中にないものとして扱う */ }
-    return false;
-  }
-
-  // アプリ(iframe 内)の合言葉をこのページで預かる。iPhone では iframe 内の保存領域が
-  // アプリを閉じると消えることがあるため、消えにくいこちら側にも保存しておく。
-  // 応答するのは、このページが開いた iframe の中にある Apps Script の画面からの依頼だけ。
-  window.addEventListener('message', (e) => {
-    if (!/^https:\/\/[a-z0-9-]+-script\.googleusercontent\.com$/.test(e.origin)) return;
-    if (!frame || !e.source || !isInside(frame.contentWindow, e.source, 0)) return;
-    const data = e.data || {};
-    try {
-      if (data.type === 'aredoko:getPasscode') {
-        e.source.postMessage({ type: 'aredoko:passcode', passcode: localStorage.getItem(LS_PASSCODE) || '' }, e.origin);
-      } else if (data.type === 'aredoko:setPasscode') {
-        if (data.passcode) localStorage.setItem(LS_PASSCODE, String(data.passcode));
-        else localStorage.removeItem(LS_PASSCODE);
-      }
-    } catch (err) { /* 保存できない環境ではアプリ側で毎回入力してもらう */ }
-  });
-
   if (window.top !== window.self) {
-    // 他のサイトに埋め込まれた状態では動かさない(預かっている合言葉を守るため)
+    // 他のサイトに埋め込まれた状態では動かさない(見た目を偽装して操作させる手口を防ぐため)
     showNotice('このページは埋め込みでは利用できません。');
   } else if (GAS_URL) {
-    frame = document.createElement('iframe');
+    const frame = document.createElement('iframe');
     frame.src = GAS_URL;
     frame.title = 'アレドコ';
     document.body.appendChild(frame);
