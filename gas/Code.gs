@@ -30,7 +30,7 @@ const FAVICON_URL = '';
 
 function doGet() {
   const output = HtmlService.createHtmlOutputFromFile('Index')
-    .setTitle('山創 道具管理')
+    .setTitle('アレドコ')
     .addMetaTag('viewport', 'width=device-width, initial-scale=1, viewport-fit=cover')
     // GitHub Pages の入口ページ(index.html)から iframe で埋め込めるようにする
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
